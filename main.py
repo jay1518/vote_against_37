@@ -1,18 +1,16 @@
 # coding: utf-8
-import uuid
 import requests
+from faker import Factory
 
-username = str(uuid.uuid4())
-try:
-    realname = input("输入真实姓名（按回车跳过）：")
-except:
-    realname = ''
-finally:
-    realname = realname.strip() or '陈旭员'
+fake = Factory.create()
+
+username = ''.join(list(filter(str.isalpha, fake.name())))
+email = fake.email()
+realname = Factory.create(locale='zh_CN').name()
 
 register_data = {
     "userName": username,
-    "email": "%s@its.bull.shit" % username,
+    "email": email,
     "password": "123456",
     "password1": "123456",
     "realName": realname,
