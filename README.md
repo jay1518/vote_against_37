@@ -10,5 +10,5 @@ python3 main.py
 或者
 
 ```bash
-curl -L https://raw.githubusercontent.com/loggerhead/vote_against_37/master/main.py | python3 -
+curl -L https://raw.githubusercontent.com/loggerhead/vote_against_37/master/main.sh | bash -s
 ```
