@@ -2,13 +2,8 @@
 
 ![against_37.png](https://ooo.0o0.ooo/2016/03/28/56f8e561112bf.png)
 
-# 怎么反对？
+# 使用方法
 ```bash
-python3 main.py
-```
-
-或者
-
-```bash
-curl -L https://raw.githubusercontent.com/loggerhead/vote_against_37/master/main.sh | bash -s
+python3 main.py --count 10 # 投票十次
+python3 main.py --forever # 一直投票
 ```
