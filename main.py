@@ -1,10 +1,12 @@
 # coding: utf-8
 import requests
+from random import shuffle
 from faker import Factory
 
 fake = Factory.create()
 
-username = ''.join(filter(str.isalpha, fake.name()))
+username = list(filter(str.isalpha, fake.name()))
+username = ''.join(username)
 email = fake.email()
 realname = Factory.create(locale='zh_CN').name()
 
