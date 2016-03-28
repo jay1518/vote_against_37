@@ -4,7 +4,7 @@ from faker import Factory
 
 fake = Factory.create()
 
-username = ''.join(list(filter(str.isalpha, fake.name())))
+username = ''.join(filter(str.isalpha, fake.name()))
 email = fake.email()
 realname = Factory.create(locale='zh_CN').name()
 
