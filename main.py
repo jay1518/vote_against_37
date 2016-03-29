@@ -21,7 +21,6 @@ def vote(timeout=3):
 
     s = requests.session()
     s.headers.update(headers())
-    print(headers())
 
     register_data = {
         "userName": username,
