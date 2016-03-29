@@ -1,7 +1,9 @@
 # -*- coding: utf-8 -*-
+from __future__ import print_function
 from faker import Factory
 import requests
 import random
+import json
 
 fake = Factory.create()
 
@@ -33,8 +35,8 @@ def vote(timeout=3):
         "password": "123456",
         "password1": "123456",
         "realName": real_name,
-        "province": "北京市",
-        "job": "IT|互联网|通信",
+        "province": u"北京市",
+        "job": u"IT|互联网|通信",
         "mobile": "",
         "address": "",
     }
@@ -42,7 +44,7 @@ def vote(timeout=3):
     register_data = {
         '_ZVING_METHOD': 'Register.doRegister',
         '_ZVING_URL': '%2Fregister',
-        '_ZVING_DATA': str(register_data),
+        '_ZVING_DATA': json.dumps(register_data),
         '_ZVING_DATA_FORMAT': 'json',
     }
 
