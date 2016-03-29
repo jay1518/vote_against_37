@@ -2,32 +2,26 @@
 from __future__ import print_function
 from faker import Factory
 import requests
-import random
 import json
 
-fake = Factory.create()
+fake = Factory.create(locale='zh_CN')
 
 
 def headers():
     return {
-        'X-Forwarded-For': ip()
+        'X-Forwarded-For': fake.ipv4(),
+        'User-Agent': fake.user_agent()
     }
-
-
-def ip():
-    return '.'.join([str(x) for x in [random.randint(1, 254),
-                                      random.randint(1, 254),
-                                      random.randint(1, 254),
-                                      random.randint(1, 254)]])
 
 
 def vote(timeout=3):
     username = fake.user_name()
     email = fake.email()
-    real_name = Factory.create(locale='zh_CN').name()
+    real_name = fake.name()
 
     s = requests.session()
     s.headers.update(headers())
+    print(headers())
 
     register_data = {
         "userName": username,
