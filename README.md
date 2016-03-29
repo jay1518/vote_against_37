@@ -7,3 +7,8 @@
 python3 main.py --count 10 # 投票十次
 python3 main.py --forever # 一直投票
 ```
+
+# 一键启动
+```bash
+curl -L https://raw.githubusercontent.com/ericls/vote_against_37/master/main.sh | bash -
+```
