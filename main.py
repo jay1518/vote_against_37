@@ -54,7 +54,7 @@ def vote():
     vote_data = {
         '_ZVING_METHOD': 'SupportOppose.voteOppose',
         '_ZVING_URL': '%2FdraftDetail',
-        '_ZVING_DATA': '{"ID":"45114"}',
+        '_ZVING_DATA': '{"ID":"45115"}',
         '_ZVING_DATA_FORMAT': 'json',
     }
     r2 = s.post(url, data=vote_data, cookies=r1.cookies)
