@@ -19,7 +19,7 @@ def ip():
                                       random.randint(1, 254)]])
 
 
-def vote():
+def vote(timeout=3):
     username = fake.user_name()
     email = fake.email()
     real_name = Factory.create(locale='zh_CN').name()
@@ -48,7 +48,7 @@ def vote():
 
     url = "http://zqyj.chinalaw.gov.cn/ajax/invoke"
 
-    r1 = s.post(url, data=register_data)
+    r1 = s.post(url, data=register_data, timeout=timeout)
     print(r1.status_code, r1.text)
 
     vote_data = {
@@ -57,7 +57,7 @@ def vote():
         '_ZVING_DATA': '{"ID":"45115"}',
         '_ZVING_DATA_FORMAT': 'json',
     }
-    r2 = s.post(url, data=vote_data, cookies=r1.cookies)
+    r2 = s.post(url, data=vote_data, cookies=r1.cookies, timeout=timeout)
     print(r2.status_code, r2.text)
 
 
@@ -65,11 +65,22 @@ if __name__ == '__main__':
     import argparse
     parser = argparse.ArgumentParser()
     parser.add_argument("--count", help="vote how many times", default=10, type=int)
+    parser.add_argument("--timeout", help="request timeout, in seconds", default=3.0, type=float)
     parser.add_argument("--forever", help="vote forever", action='store_true')
     args = parser.parse_args()
     if args.forever:
         while True:
-            vote()
+            try:
+                vote(timeout=args.timeout)
+            except KeyboardInterrupt:
+                break
+            except Exception as e:
+                print(e)
     else:
         for i in range(args.count):
-            vote()
+            try:
+                vote(timeout=args.timeout)
+            except KeyboardInterrupt:
+                break
+            except Exception as e:
+                print(e)
