@@ -3,6 +3,7 @@ from __future__ import print_function
 from faker import Factory
 import requests
 import json
+import uuid
 
 fake = Factory.create(locale='zh_CN')
 
@@ -15,8 +16,8 @@ def headers():
 
 
 def vote(timeout=3):
-    username = fake.user_name()
-    email = fake.email()
+    username = str(uuid.uuid4())[:8]
+    email = '{0}@163.com'.format(str(uuid.uuid4())[:8])
     real_name = fake.name()
 
     s = requests.session()
