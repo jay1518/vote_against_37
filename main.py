@@ -61,7 +61,7 @@ if __name__ == '__main__':
     import argparse
     parser = argparse.ArgumentParser()
     parser.add_argument("--count", help="vote how many times", default=10, type=int)
-    parser.add_argument("--timeout", help="request timeout, in seconds", default=3.0, type=float)
+    parser.add_argument("--timeout", help="request timeout, in seconds", default=5.0, type=float)
     parser.add_argument("--forever", help="vote forever", action='store_true')
     args = parser.parse_args()
     if args.forever:
