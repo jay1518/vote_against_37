@@ -12,3 +12,9 @@ python3 main.py --forever # 一直投票
 ```bash
 curl -L https://raw.githubusercontent.com/ericls/vote_against_37/master/main.sh | bash -
 ```
+
+# 用 docker 启动
+
+```bash
+docker-compose up
+```
